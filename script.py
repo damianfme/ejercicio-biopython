@@ -14,6 +14,7 @@ def summarize_contents(filename):
 		all_records.append(seq_record.name)
 		print("Name: ", seq_record.name)
 		print("ID:",seq_record.id)
+		print("Description: ", seq_record.description)
 		print("\n")
 		
 		
