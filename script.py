@@ -3,7 +3,7 @@ from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 import os
 
-filename = os.path.abspath("data/ls_orchid.gbk")
+filename = os.path.abspath("data/opuntia.fasta")
 
 #Creacion de funcion
 def summarize_contents(filename):
@@ -18,7 +18,7 @@ def summarize_contents(filename):
 	else:
 		type_file= "fasta"
 		
-	record = list/SeqIO.parse(filename, type_file))
+	record = list(SeqIO.parse(filename, type_file))
 	#Diccionario
 	d = {}
 	d['File:'] = File_List[1]
@@ -27,14 +27,15 @@ def summarize_contents(filename):
 	
 	d['Names:'] = []
 	d['IDs:'] = []
-	d['Descriptions'] = []
+	d['Descriptions:'] = []
 	#Registro de Records
-	for seq_rcd in SeIO.parse(filename, type_file):
-		d['Names:'].append(seq_rcs.name)
+	for seq_rcd in SeqIO.parse(filename, type_file):
+		d['Names:'].append(seq_rcd.name)
 		d['IDs:'].append(seq_rcd.id)
 		d['Descriptions:'].append(seq_rcd.description)
 	return d
 
 if __name__ == "__main__":
 	resultados = summarize_contents(filename)
+	print(resultados)
 	
