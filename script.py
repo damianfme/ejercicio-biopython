@@ -7,29 +7,34 @@ filename = os.path.abspath("data/ls_orchid.gbk")
 
 #Creacion de funcion
 def summarize_contents(filename):
-	listaOs = os.path.split(filename)
-	listaExt = os.path.splitext(filename)
-	if (listaExt[1] == ".gbk"):
+	File_List = []
+	File_Extension = []
+	
+	File_List = os.path.split(filename)
+	File_Extension = os.path.splitext(filename)
+	
+	if(File_Extension[1] == ".gbk"):
 		type_file= "genbank"
-	else: 
+	else:
 		type_file= "fasta"
-	record = list(SeqIO.parse(filename, type_file))
-	#Creacion de diccionario
+		
+	record = list/SeqIO.parse(filename, type_file))
+	#Diccionario
 	d = {}
-	d['File:'] = listaOs[1]
-	d['Path:'] = listaOs[0]
-	d['Num_records:'] = len(record)
-	#Diccionario con listas
+	d['File:'] = File_List[1]
+	d['Path:'] = File_List[0]
+	d['Num_Records:'] = len(record)
+	
 	d['Names:'] = []
 	d['IDs:'] = []
 	d['Descriptions'] = []
-	#Registro de records
-	for seq_rcd in SeqIO.parse(filename,type_file):
-		d['Names:'].append(seq_rcd.name)
+	#Registro de Records
+	for seq_rcd in SeIO.parse(filename, type_file):
+		d['Names:'].append(seq_rcs.name)
 		d['IDs:'].append(seq_rcd.id)
-		d['Descriptions'].append(seq_rcd.description)
+		d['Descriptions:'].append(seq_rcd.description)
 	return d
-#Imprimir la funcion
+
 if __name__ == "__main__":
 	resultados = summarize_contents(filename)
-	print(resultados)
+	
