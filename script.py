@@ -4,18 +4,29 @@ from Bio.SeqRecord import SeqRecord
 import os
 filename= "/mnt/c/Users/usuario/Desktop/ls_orchid.gbk"
 def summarize_contents(filename):
-	all_records=[]
-	records = list(SeqIO.parse(filename, "genbank"))
-	print ("Path: ", os.path.dirname(filename))
-	print("num_records = %i records" % len(records))
-	print("\n\n")
+	FileList = []
+	File_Extension = []
 	
-	for seq_record in SeqIO.parse(filename, "genbank"):
-		all_records.append(seq_record.name)
-		print("Name: ", seq_record.name)
-		print("ID:",seq_record.id)
-		print("Description: ", seq_record.description)
-		print("\n")
-		
-		
-summarize_contents(filename)
+	if(File_Extension[1] == ".gbk"):
+		type_file= "genbank"
+	else:
+		type_file= "fasta"
+		pass
+	
+	records = list(SeqIO.parse(filename, type_file))
+	cadena = " "
+	path= os.path.dirname(filename)
+	
+	cadena=("File: " + FileList[1])
+	cadena+= ("\nPath " + path)
+	cadena+= ("\nnum_records= " + str(len(records)))
+	
+	for seq_record in SeqIO.parse(filename, type_file):
+		cadena+= ("\n-ID " + str(seq_record.id))
+		cadena+= ("\nName: " + str(seq_record.name))
+		cadena+= ("\nDescription " + str(seq_record.description))
+	return cadena
+
+	if _name_ == "_main_":
+		r = summarize_contents(filename)
+		print(r)
