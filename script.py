@@ -19,7 +19,7 @@ def summarize_contents(filename):
 	
 	cadena=("File: " + FileList[1])
 	cadena+= ("\nPath " + path)
-	cadena+= ("\nnum_records= " + str(len(records)))
+	cadena+= ("\nNum_records= " + str(len(records)))
 	
 	for seq_record in SeqIO.parse(filename, type_file):
 		cadena+= ("\n-ID " + str(seq_record.id))
